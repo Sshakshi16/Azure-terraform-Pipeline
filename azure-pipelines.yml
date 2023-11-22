@@ -35,7 +35,7 @@ steps:
 - task: TerraformCLI@2
   inputs:
     command: 'apply'
-    environmentServiceName: 'Azure-connection-recom'
+    environmentServiceName: 'Free Trial(ec88c61c-3230-434f-9bf2-a6eff5fe3e48)'
     runAzLogin: true
     allowTelemetryCollection: true
 
