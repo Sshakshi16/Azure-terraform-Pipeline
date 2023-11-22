@@ -28,11 +28,10 @@ steps:
     workingDirectory: '$(Build.SourcesDirectory)'
     backendType: 'azurerm'
     ensureBackend: true
-    backendServiceArm: '<service_connection_name>'
-    resourceGroupName: '<resource_group_name>'
-    storageAccountName: '<storage_account_name>'
-    containerName: '<container_name>'
-    key: '<state_file_key>'
+    backendServiceArm: 'Azure-connection-recom'
+    resourceGroupName: 'example-resourcegroup'
+    storageAccountName: 'terraformstorageproject'
+   
 
 - task: TerraformTaskV3@3
   displayName: 'Terraform Validate'
@@ -45,7 +44,7 @@ steps:
   inputs:
     command: 'plan'
     workingDirectory: '$(Build.SourcesDirectory)'
-    environmentServiceName: '<service_connection_name>'
+    environmentServiceName: 'Azure-connection-recom'
     commandOptions: '-out=tfplan'
 
 - task: TerraformTaskV3@3
@@ -53,7 +52,7 @@ steps:
   inputs:
     command: 'apply'
     workingDirectory: '$(Build.SourcesDirectory)'
-    environmentServiceName: '<service_connection_name>'
+    environmentServiceName: 'Azure-connection-recom'
     commandOptions: '-auto-approve -input=false tfplan'
 
 - script: |
