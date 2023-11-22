@@ -22,7 +22,10 @@ steps:
   inputs:
     command: 'version'
     allowTelemetryCollection: true
-
+- task: TerraformCLI@2
+  inputs:
+    command: 'init'
+    allowTelemetryCollection: true
 
 
 
