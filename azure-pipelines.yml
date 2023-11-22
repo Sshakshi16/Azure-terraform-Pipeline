@@ -32,6 +32,12 @@ steps:
     environmentServiceName: 'Azure-connection-recom'
     runAzLogin: true
     allowTelemetryCollection: true
+- task: TerraformCLI@2
+  inputs:
+    command: 'apply'
+    environmentServiceName: 'Azure-connection-recom'
+    runAzLogin: true
+    allowTelemetryCollection: true
 
 
 
