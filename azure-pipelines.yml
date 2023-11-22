@@ -13,47 +13,7 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- task: TerraformTaskV4@0
-  displayName: 'Install Terraform'
-  inputs:
-    terraformVersion: 'latest'
 
-- checkout: self
-  displayName: 'Checkout repository'
-
-- task: TerraformTaskV4@1
-  displayName: 'Terraform Init'
-  inputs:
-    command: 'init'
-    workingDirectory: '$(Build.SourcesDirectory)'
-    backendType: 'azurerm'
-    ensureBackend: true
-    backendServiceArm: 'Azure-connection-recom'
-    resourceGroupName: 'example-resourcegroup'
-    storageAccountName: 'terraformstorageproject'
-   
-
-- task: TerraformTaskV3@3
-  displayName: 'Terraform Validate'
-  inputs:
-    command: 'validate'
-    workingDirectory: '$(Build.SourcesDirectory)'
-
-- task: TerraformTaskV3@3
-  displayName: 'Terraform Plan'
-  inputs:
-    command: 'plan'
-    workingDirectory: '$(Build.SourcesDirectory)'
-    environmentServiceName: 'Azure-connection-recom'
-    commandOptions: '-out=tfplan'
-
-- task: TerraformTaskV3@3
-  displayName: 'Terraform Apply'
-  inputs:
-    command: 'apply'
-    workingDirectory: '$(Build.SourcesDirectory)'
-    environmentServiceName: 'Azure-connection-recom'
-    commandOptions: '-auto-approve -input=false tfplan'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
